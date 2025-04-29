@@ -15,3 +15,5 @@ Give a description of the technologies and techniques used. Pictures, GIFs, or s
 This project is deployed on GitHub Pages:
 
 - ADD LINK HERE
+
+"Please use a local server (like Live Server) to run this project due to ES6 module requirements."
