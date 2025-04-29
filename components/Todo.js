@@ -44,6 +44,8 @@ class Todo {
           month: "short",
           day: "numeric",
         })}`;
+      } else {
+        todoDate.textContent = "Invalid date format";
       }
     }
 
