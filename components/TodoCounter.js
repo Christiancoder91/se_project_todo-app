@@ -9,13 +9,19 @@ class TodoCounter {
   }
 
   updateCompleted = (increment) => {
-    this._completed += increment ? 1 : -1;
-    this._updateText();
+    const newValue = this._completed + (increment ? 1 : -1);
+    if (newValue >= 0 && newValue <= this._total) {
+      this._completed = newValue;
+      this._updateText();
+    }
   };
 
   updateTotal = (increment) => {
-    this._total += increment ? 1 : -1;
-    this._updateText();
+    const newValue = this._total + (increment ? 1 : -1);
+    if (newValue >= 0) {
+      this._total = newValue;
+      this._updateText();
+    }
   };
   _updateText = () => {
     this._element.textContent = `${this._completed} out of ${this._total} tasks completed`;

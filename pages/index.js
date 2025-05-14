@@ -16,10 +16,9 @@ const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 const addTodoPopup = new PopupWithForm("#add-todo-popup", handleFormSubmit);
 addTodoPopup.setEventListeners();
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
+function handleFormSubmit(formData) {
+  const name = formData.name;
+  const dateInput = formData.date;
 
   const date = dateInput ? new Date(dateInput) : null;
   if (date) {
@@ -29,6 +28,7 @@ function handleFormSubmit(evt) {
   const id = uuidv4();
   const values = { name, date, id };
   renderTodo(values);
+  todoCounter.updateTotal(true);
   addTodoPopup.close();
   newTodoValidator.resetValidation();
 }
@@ -38,6 +38,7 @@ function handleCheck(completed) {
 }
 
 function handleDelete(completed) {
+  todoCounter.updateTotal(false);
   if (completed) {
     todoCounter.updateCompleted(false);
   }
