@@ -6,6 +6,9 @@ class FormValidator {
     this._inputErrorClass = settings.inputErrorClass;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._formElement = formElement;
+    this._inputList = Array.from(
+      this._formElement.querySelectorAll(this._inputSelector)
+    );
   }
 
   _showInputError(inputElement, errorMessage) {
@@ -53,9 +56,6 @@ class FormValidator {
   }
 
   _setEventListeners() {
-    const inputList = this._formElement.querySelectorAll(this._inputSelector);
-    this._inputList = Array.from(inputList);
-
     this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
@@ -74,8 +74,7 @@ class FormValidator {
   }
 
   resetValidation() {
-    const inputList = this._formElement.querySelectorAll(this._inputSelector);
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
     this._formElement.reset();

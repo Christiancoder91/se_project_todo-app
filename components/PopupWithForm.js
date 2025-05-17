@@ -7,11 +7,6 @@ class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  close() {
-    super.close();
-    this._form.reset();
-  }
-
   _getInputValues() {
     this._inputList = this._form.querySelectorAll(".popup__input");
     const inputValues = {};

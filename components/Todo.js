@@ -1,5 +1,5 @@
 class Todo {
-  constructor(data, templateSelector, handleCheck, handleDelete) {
+  constructor({ data, templateSelector, handleCheck, handleDelete }) {
     this._data = data;
     this._name = data.name;
     this._date = data.date || null;
